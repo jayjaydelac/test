@@ -1,0 +1,37 @@
+<nav>	
+	<ul>
+		
+		<li><a href="index.php?c=Formation">Formation</a></li>
+		<li><a href="index.php?c=FormationSession&a=edit">Ajouter Sessions de Formation</a></li>
+		<li><a href="index.php?c=Matter">Matières</a></li>	
+				
+	</ul>
+</nav>
+
+<div class="col-md-12">
+		<?php
+            //var_dump($coll_ref);
+			//faire une boucle qui va, pour chaque itération, afficher le contenu du n-ième objet
+			for ($i=0; $i < count($coll_forsess); $i++):				
+		?>						
+				<div class="col-md-4">
+				    <?php  echo $coll_forsess[$i]->getFormation()->getData('title'); ?>
+				</div>
+				<div class="col-md-2">
+				    <?php  echo $coll_forsess[$i]->getDate('begin_date'); ?>
+				</div>
+				<div class="col-md-2">
+				    <?php  echo $coll_forsess[$i]->getDate('ending_date'); ?>
+				</div>
+
+				<div class="col-md-2">
+                    <a href="index.php?c=FormationSession&a=edit&id=<?= $coll_forsess[$i]->getData('id'); ?>">Modifer</a>
+				</div>
+				<div class="col-md-2">					
+					<a href="index.php?c=FormationSession&a=delete&id=<?= $coll_forsess[$i]->getData('id'); ?>">Supprimer</a>
+				</div>				
+		<?php	
+			endfor;
+		?>
+
+</div>

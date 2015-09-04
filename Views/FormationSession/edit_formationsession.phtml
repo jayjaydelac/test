@@ -1,0 +1,32 @@
+<div class="col-md-12">
+    
+    <form method="post" action="">
+            <input type="hidden" name="id" value="<?= $maFormationSession->getData('id');?>" />
+               
+                <label>Formation: </label>
+                <select class="form-control col-md-2" data-validation="required" name="formations">                    
+                <?php                   
+                    //faire une boucle qui va, pour chaque itération, afficher le contenu du n-ième objet
+                    for ($i=0; $i < count($coll_for); $i++):              
+                ?>
+                        <option value="<?= $coll_for[$i]->getData('id'); ?>"><?= $coll_for[$i]->getData('title'); ?></option>
+                <?php   
+                    endfor;
+                ?>
+                </select>
+
+                <div class="form-group">
+                    <label>Date de début : </label>
+                    <input type="date" class="datepicker" data-validation-format="yyyy/mm/dd" data-validation="required" name="begin_date" value="<?= $maFormationSession->getDate('begin_date');?>" />
+                
+                </div>
+                <div class="form-group">
+                    <label>Date de fin : </label>
+                    <input type="date" class="datepicker" data-validation-format="yyyy/mm/dd" data-validation="required" name="ending_date" value="<?= $maFormationSession->getDate('ending_date');?>" />
+                
+                </div>
+                <button name="submit">Envoyer</button>
+        
+        </form>
+    
+</div>

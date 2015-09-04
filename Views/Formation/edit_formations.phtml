@@ -1,0 +1,60 @@
+<div class="col-md-12">
+    
+    <form method="post" action="">
+            <input type="hidden" name="id" value="<?= $maFormation->getData('id');?>" />
+                <div class="form-group">
+                    <label>Titre : </label>
+                    <input type="text" name="title" data-validation-help="Veuillez entrer l'intitulé de la formation" data-validation="length" data-validation-length="max100" data-validation="required" value="<?= $maFormation->getData('title'); ?>" />
+                            
+                </div>
+                <div class="form-group">
+                    <label>Effectif moyen : </label>
+                    <input type="text" name="average_effective" data-validation-help="Veuillez entrer l'effectif moyen de la formation" data-validation="number" data-validation-allowing="range[1;99]" data-validation="required"  value="<?= $maFormation->getData('average_effective'); ?>" />
+                
+                </div>
+                <div class="form-group">
+                    <label>Heures conventionnées en Centre : </label>
+                    <input type="text" name="convention_hour_center" data-validation-help="Veuillez entrer le nombre d'heures conventionnées en centre" data-validation="number" data-validation-allowing="range[1;9999]" data-validation="required" value="<?= $maFormation->getData('convention_hour_center');?>" />
+                
+                </div>
+                <div class="form-group">
+                    <label>Heures conventionnées en Entreprise : </label>
+                    <input type="text" name="convention_hour_company" data-validation-help="Veuillez entrer le nombre d'heures conventionnées en entreprise" data-validation="number" data-validation-allowing="range[1;9999] data-validation="required" value="<?= $maFormation->getData('convention_hour_company');?>" />
+                
+                </div>
+                <div class="form-group">
+                    <label>Code Marché : </label>
+                    <input type="text" name="deal_code" data-validation-help="Veuillez entrer le code marché de la formation" data-validation="required" value="<?= $maFormation->getData('deal_code');?>" />
+                
+                </div>
+                <label>Matières: </label>
+                <select multiple class="form-control col-md-2" data-validation="required" name="matters[]">                    
+                <?php                   
+                    //faire une boucle qui va, pour chaque itération, afficher le contenu du n-ième objet
+                    for ($i=0; $i < count($coll_matter); $i++):              
+                ?>
+                        <option value="<?= $coll_matter[$i]->getData('id'); ?>"><?= $coll_matter[$i]->getData('title'); ?></option>
+                <?php   
+                    endfor;
+                ?>
+                </select>
+                <div class="form-group">
+                    <label>Donneur d'ordre : </label>
+                    <input type="text" name="order_giver" data-validation-help="Veuillez entrer le donneur d'ordre de la formation" data-validation="required" value="<?= $maFormation->getData('order_giver');?>" />
+                
+                </div>
+                <div class="form-group">
+                    <label>Date de début : </label>
+                    <input type="date" class="datepicker" data-validation-format="yyyy/mm/dd" data-validation="required" name="deal_begin_date" value="<?= $maFormation->getDate('deal_begin_date');?>" />
+                
+                </div>
+                <div class="form-group">
+                    <label>Date de fin : </label>
+                    <input type="date" class="datepicker" data-validation-format="yyyy/mm/dd" data-validation="required" name="deal_ending_date" value="<?= $maFormation->getDate('deal_ending_date');?>" />
+                
+                </div>
+                <button name="submit">Envoyer</button>
+        
+        </form>
+    
+</div>

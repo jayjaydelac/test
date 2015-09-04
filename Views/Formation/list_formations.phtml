@@ -1,0 +1,30 @@
+<nav>	
+	<ul>
+		
+		<li><a href="index.php?c=Formation&a=edit">Ajouter une Formation</a></li>
+		<li><a href="index.php?c=FormationSession">Sessions de Formation</a></li>
+		<li><a href="index.php?c=Matter">Matières</a></li>	
+				
+	</ul>
+</nav>
+
+<div class="col-md-12">
+		<?php
+            //var_dump($coll_ref);
+			//faire une boucle qui va, pour chaque itération, afficher le contenu du n-ième objet
+			for ($i=0; $i < count($coll_for); $i++):				
+		?>						
+				<div class="col-md-4">
+				    <?php  echo $coll_for[$i]->getData('title'); ?>
+				</div>
+				<div class="col-md-4">
+                    <a href="index.php?c=Formation&a=edit&id=<?= $coll_for[$i]->getData('id'); ?>">Modifer</a>
+				</div>
+				<div class="col-md-4">					
+					<a href="index.php?c=Formation&a=delete&id=<?= $coll_for[$i]->getData('id'); ?>">Supprimer</a>
+				</div>				
+		<?php	
+			endfor;
+		?>
+
+</div>
